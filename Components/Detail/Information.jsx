@@ -1,52 +1,58 @@
 import * as React from "react"
 import { useNavigation } from '@react-navigation/native';
-import { Text,  View, ScrollView, Image, StyleSheet } from 'react-native';
+import { Text, View, ScrollView, Image, StyleSheet } from 'react-native';
 
 export default function Information({ image, name, description }) {
 
     const navigation = useNavigation()
 
-    console.log(image)
-
     return (
-        
+
         <ScrollView>
-            <View>
-                <Text>{name}</Text>
-                </View>
-            <View style={styles.full}>
-                    <Image 
-                        style={styles.image}
-                        source={{uri: image}}
-                    />
-
+            <Text
+                allowFontScaling={true}
+                style={styles.title}
+            >{name}</Text> 
+            <View style={styles.containImage}>
+                <Image
+                    style={styles.image}
+                    source={{ uri: image }}
+                    resizeMode="stretch"
+                />
             </View>
-              <View style={styles.full}>
-                <Text>{description}</Text>
-
-              </View>
-
-              
-                
-
-           
-
-           
-
-           
+            <Text allowFontScaling={true} style={styles.description}>{description}</Text>
         </ScrollView>
 
-        
+
     );
 }
 
 const styles = StyleSheet.create({
-    image: {
-        height: "100%",
-        width: "100%"
-    },
-    full: {
+    containImage: {
+        height: 300,
         width: "100%",
-        height: 300
+        
+    },
+    image: {
+        height: "90%",
+        width: "90%",
+        marginHorizontal: "5%",
+    },
+    title: {
+        color: "red",
+        fontSize: 20,
+        textAlign: "center",
+        marginVertical: 5,
+        textShadowColor: "white",
+        fontWeight: "bold",
+    },
+    description: {
+        color: "red",
+        fontSize: 15,
+        textAlign: "center",
+        marginBottom: 20,
+        textShadowColor: "white",
+        fontWeight: "300",
+        fontStyle: "italic"
     }
 })
