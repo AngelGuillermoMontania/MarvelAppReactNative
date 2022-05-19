@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, ActivityIndicator, FlatList } from 'react-native';
+import { Text, View, StyleSheet, ActivityIndicator, FlatList, StatusBar, ImageBackground } from 'react-native';
 import CharacterCard from './CharacterCard';
 import axios from 'axios';
 import apiParams from "../config.js";
@@ -56,9 +56,18 @@ export default function Home() {
     return (
         <View >
             {
-                isLoading ? 
-                    <ActivityIndicator size="large" color="#00ff00" />
+                isLoading ?
+                    <ImageBackground source={require('../assets/logoMarvel.png')} resizeMode="cover" style={{height: "100%"}}>
+                        <ActivityIndicator size="large" color="#00ff00" style={{margin: 100}}/>
+                    </ImageBackground>
                 : <View>
+                    <ImageBackground source={require('../assets/Escudo1.jpg')} resizeMode="cover" >
+                    <StatusBar
+                        animated={true}
+                        showHideTransition='fade'
+                        hidden={true} 
+                    />
+
                     <View style={styles.containSearch}>
                         <Searchbar
                             placeholder="Search for character..."
@@ -73,13 +82,13 @@ export default function Home() {
                             }}
                         />
                     </View>
-                    
+                    {
+                        data.length !== 0 ?
                         <FlatList 
                             data={data}
                             keyExtractor={({id}) => id.toString()}
-                            style={styles.containHome}
+              
                             onEndReached={() => {
-                                console.log("END")
                                 addCharacters()
                                 setOffset(offset + 20)
                             }}
@@ -92,7 +101,11 @@ export default function Home() {
                                 />
                             }
                         />
-                   
+                        : <ImageBackground source={require('../assets/Escudo1.jpg')} resizeMode="cover" style={{height: "100%"}}>
+                            <Text style={styles.textNotSearch}>Character   not   found</Text>
+                        </ImageBackground>
+                    }
+                    </ImageBackground>  
                 </View>
             }
         </View>
@@ -103,9 +116,6 @@ const styles = StyleSheet.create({
     containSearch: {
         backgroundColor: "black",
     },
-    containHome: {
-        backgroundColor: "black"
-    },
     search: {
         height: 40,
         width: "90%",
@@ -115,5 +125,21 @@ const styles = StyleSheet.create({
         borderColor: 'red',
         borderStyle: 'solid',
         borderWidth: 1
+    },
+    textNotSearch: {
+        fontFamily: 'Avenger',
+        color: 'white',
+        textAlign: 'center',
+        fontSize: 60,
+        width: "90%",
+        marginVertical: '20%',
+        textShadowColor: 'black',
+        textShadowOffset: {
+            width: 0,
+            height: 0
+        },
+        textShadowRadius: 20,
+        textTransform: 'uppercase',
+        lineHeight: 90
     }
 })

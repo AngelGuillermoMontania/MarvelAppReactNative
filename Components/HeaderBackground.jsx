@@ -1,16 +1,19 @@
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, Image } from 'react-native';
 
-export default function HeaderBackground() {
+export default function HeaderBackground({color}) {
 
     return (
-        <View style={styles.containHome}>
+        <View style={{height: "100%"}}>
+            {
+                color ? <View style={{backgroundColor: 'black', height: "100%"}}></View> :
+                <Image source={require('../assets/fondoRojo3.jpeg')} style={{
+                    height: "100%",
+                    width: "100%",
+                    resizeMode: 'stretch',
+                }}>
+                </Image>
+            } 
         </View>
+        
     );
 }
-
-const styles = StyleSheet.create({
-    containHome: {
-        backgroundColor: "red",
-        height: "100%"
-    },
-})

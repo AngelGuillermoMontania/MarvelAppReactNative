@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Text, View, ActivityIndicator, FlatList } from 'react-native';
+import { Text, View, ActivityIndicator, FlatList, StyleSheet, ImageBackground } from 'react-native';
 import Comic from './Comic';
 import axios from "axios"
 import apiParams from "../../config.js"
@@ -28,25 +28,35 @@ export default function Comics({ listComics }) {
     }, [])
 
     return (
-        <View>
-            {
-                isLoading ? 
-                    <ActivityIndicator size="large" color="#00ff00" />
-                : <FlatList
-                contentContainerStyle={{alignItems: 'center'}}
-                data={data}
-                keyExtractor={({ id }) => id.toString()}
-                horizontal
-                pagingEnabled
-                renderItem={({ item }) => (
-                  <Comic 
-                    key={item.id}
-                    name={item.title} 
-                    image={`${item?.thumbnail?.path}.${item.thumbnail.extension}`}  
-                  />
-            )}
-          />
-            }
+        <View style={styles.containFlat}>
+            <ImageBackground source={require('../../assets/Escudo1.jpg')} resizeMode="cover" style={{height: "100%"}}>
+                {
+                    isLoading ? 
+                        <ActivityIndicator size="large" color="#00ff00" style={{margin: 50}}/>
+                    : <FlatList
+                    contentContainerStyle={{alignItems: 'center'}}
+                    data={data}
+                    keyExtractor={({ id }) => id.toString()}
+                    pagingEnabled
+                    horizontal
+                    renderItem={({ item }) => (
+                    <Comic 
+                        key={item.id}
+                        name={item.title} 
+                        image={`${item?.thumbnail?.path}.${item.thumbnail.extension}`}  
+                    />
+                )}
+            />
+                }
+            </ImageBackground>
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    containFlat: {
+        width: '100%',
+        backgroundColor: 'black',
+        height: '100%'
+    }
+})

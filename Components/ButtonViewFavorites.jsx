@@ -9,7 +9,7 @@ const ButtonViewFavorites = () => {
 
     return (
         <View>
-            <Pressable style={styles.button} onPress={() => navigation.navigate("Favorites")}>
+            <Pressable style={styles.button} onPress={() => navigation.navigate("FAVORITES")}>
                 {
                     <MaterialCommunityIcons name="bookmarks" size={18} style={styles.icon}/>
                 }

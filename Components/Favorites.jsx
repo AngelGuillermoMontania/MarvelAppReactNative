@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, StyleSheet, ActivityIndicator, FlatList } from 'react-native';
+import { View, StyleSheet, ActivityIndicator, FlatList, ImageBackground, Text } from 'react-native';
 import CharacterCard from './CharacterCard';
 import { useSelector } from 'react-redux';
 
@@ -16,24 +16,28 @@ export default function Favorites() {
     const [ isLoading, setLoading ] = useState(false)
     const allFavorites = useSelector((state) => state.favorite)
 
+
     return (
         <View style={styles.containHome}>
             {
-                isLoading ? 
-                    <ActivityIndicator size="large" color="#00ff00" />
-                : <View>                
-                        <FlatList 
-                            data={allFavorites}
-                            style={styles.containHome}
-                            keyExtractor={({id}) => id.toString()}
-                            renderItem={({item}) => 
-                                <CharacterCard
-                                    id={item.id}
-                                    image={`${item?.thumbnail?.path}.${item?.thumbnail?.extension}`}
-                                    name={item.name}
-                                />
-                            }
-                        />
+                allFavorites.length === 0 ?
+                    <ImageBackground source={require('../assets/Escudo1.jpg')} resizeMode="cover" style={{height: "100%"}}>
+                        <Text style={styles.text}>You   have   no   favorites</Text>
+                    </ImageBackground>
+                : <View>
+                        <ImageBackground source={require('../assets/Escudo1.jpg')} resizeMode="cover" style={{height: "100%"}}>
+                            <FlatList 
+                                data={allFavorites}
+                                keyExtractor={({id}) => id.toString()}
+                                renderItem={({item}) => 
+                                    <CharacterCard
+                                        id={item.id}
+                                        image={`${item?.thumbnail?.path}.${item?.thumbnail?.extension}`}
+                                        name={item.name}
+                                    />
+                                }
+                            />
+                        </ImageBackground>        
                    
                 </View>
             }
@@ -42,10 +46,23 @@ export default function Favorites() {
 }
 
 const styles = StyleSheet.create({
-    containHome: {
-        backgroundColor: "black"
-    },
     search: {
         height: 20
+    },
+    text: {
+        fontFamily: 'Avenger',
+        color: 'white',
+        textAlign: 'center',
+        fontSize: 60,
+        marginVertical: 100,
+        textShadowColor: 'black',
+        textShadowOffset: {
+            width: 0,
+            height: 0
+        },
+        textShadowRadius: 20,
+        textTransform: 'uppercase',
+        width: "90%",
+        lineHeight: 90
     }
 })

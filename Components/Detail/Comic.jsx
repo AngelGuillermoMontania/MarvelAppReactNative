@@ -1,4 +1,6 @@
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, Dimensions } from 'react-native';
+
+const {height, width} = Dimensions.get('window');
 
 export default function Comic({ name, image }) {
     return (
@@ -9,22 +11,34 @@ export default function Comic({ name, image }) {
                     style={styles.image}
                 />
             </View>
-            <Text>{name}</Text>
+            <Text style={styles.text}>{name}</Text>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     containComic: {
-        width: 400,
-        height: "100%"
+        width: width,
+        height: "100%",
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     containImage: {
-        height: 350,
-        width: 300
+        width: "65%",
+        height: "80%",
+        position: 'relative'
     },
     image: {
         height: "100%",
-        width: "100%"
+        width: "100%",
+    },
+    text: {
+        color: 'white',
+        fontFamily: 'Marvel',
+        fontWeight: 'bold',
+        fontSize: 22,
+        textAlign: 'center',
+        width: "90%"
     }
 })

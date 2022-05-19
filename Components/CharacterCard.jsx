@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import { Text, Image, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, Image, View, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
 
 export default function CharacterCard({ image, name, id }) {
 
@@ -8,9 +8,9 @@ export default function CharacterCard({ image, name, id }) {
     return (
         <TouchableOpacity 
             style={styles.containCard}
-            onPress={() => navigation.navigate('Detail', {id})}
+            onPress={() => navigation.navigate('DETAIL', {id})}
         >
-            <Text style={styles.font}>{name}</Text>
+        <ImageBackground source={require('../assets/fondoCard.jpg')} resizeMode="stretch" style={styles.background} imageStyle={{borderRadius: 20}}>
             <View style={styles.containImage}>
                 <Image
                     style={styles.image}
@@ -18,6 +18,8 @@ export default function CharacterCard({ image, name, id }) {
                     resizeMode="stretch"
                 />
             </View>
+            <Text style={styles.font}>{name}</Text>
+        </ImageBackground>   
         </TouchableOpacity>
     );
 }
@@ -25,34 +27,40 @@ export default function CharacterCard({ image, name, id }) {
 
 const styles = StyleSheet.create({
     containCard: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-        flex: 1,
-        height: 100,
-        width: "95%",
-        marginHorizontal: "2.5%",
+        height: 70,
+        marginLeft: "5%",
         textAlign: "center",
         marginVertical: 20,
         textAlignVertical: "center",
-        backgroundColor: "red",
-        borderRadius: 15
+        borderRadius: 50
+    },
+    background: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginLeft: "5%",
+        width: "95%",
+        borderRadius: 50
     },
     containImage: {
-        width: "60%",
+        position: 'relative',
+        height: 75
     },
     image: {
-        width: "100%",
-        height: "100%",
+        width: 75,
+        height: 75,
         borderRadius: 50,
+        position: 'absolute',
+        bottom: 0,
+        left: -20
     },
     font: {
         textAlign: "center",
-        width: "40%",
+        width: "85%",
         color: "white",
         fontFamily: 'Marvel',
         fontWeight: 'bold',
-        fontSize: 20,
+        fontSize: 22,
         textShadowColor: 'white',
         textShadowOffset: {
             width: 0,
