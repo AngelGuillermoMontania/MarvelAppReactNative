@@ -18,6 +18,7 @@ ___
 ___
 ## How to start the project?
 
+Note: The app is now ready to generate an apk after following these steps
 ### First
 
 Add the .env file in the root folder along with the keys provided by [API MARVEL](https://developer.marvel.com/)
