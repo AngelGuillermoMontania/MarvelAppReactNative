@@ -18,7 +18,7 @@ ___
 ___
 ## How to start the project?
 
-Note: The app is now ready to generate an apk after following these steps
+Note: The app is now ready to generate an apk after following these steps through `expo build:android` in terminal
 ### First
 
 Add the .env file in the root folder along with the keys provided by [API MARVEL](https://developer.marvel.com/)
