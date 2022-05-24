@@ -9,9 +9,7 @@ import axios from "axios";
 import FavoriteButton from "./FavoriteButton";
 import HeaderBackground from "../HeaderBackground";
 
-
 const Tab = createBottomTabNavigator();
-
 
 export default function Detail({ route }) {
 
@@ -50,24 +48,22 @@ export default function Detail({ route }) {
 					},
 					headerTitleAlign: 'left',
 					headerBackground: () => <HeaderBackground color={'#000000'}/>,
-				}}
-				
+				}}	
 			>
 				{
 					() => (isLoading ?
-						<ImageBackground source={require('../../assets/Escudo1.jpg')} resizeMode="cover" style={{height: "100%"}}>
+						<ImageBackground source={require('../../assets/Shield.jpg')} resizeMode="cover" style={{height: "100%"}}>
 							<ActivityIndicator size="large" color="#00ff00" style={{margin: 50}}/>
 						</ImageBackground>
-						: <Information
-							image={`${data?.thumbnail?.path}.${data.thumbnail.extension}`}
-							name={data?.name}
-							description={data?.description}
-							numSeries={data?.series?.available}
-							numEvents={data?.events?.available}
-							numStories={data?.stories?.available}
-						/>)
+					: <Information
+						image={`${data?.thumbnail?.path}.${data.thumbnail.extension}`}
+						name={data?.name}
+						description={data?.description}
+						numSeries={data?.series?.available}
+						numEvents={data?.events?.available}
+						numStories={data?.stories?.available}
+					/>)
 				}
-
 			</Tab.Screen>
 			<Tab.Screen
 				name="Comics"

@@ -1,44 +1,32 @@
-import { useState } from 'react';
-import { View, StyleSheet, ActivityIndicator, FlatList, ImageBackground, Text } from 'react-native';
+import { View, StyleSheet, FlatList, ImageBackground, Text } from 'react-native';
 import CharacterCard from './CharacterCard';
 import { useSelector } from 'react-redux';
 
-const theme = {
-    roundness: 1,
-    colors: {
-      primary: '#3498db',
-      accent: '#f1c40f',
-    },
-  };
-
 export default function Favorites() {
-    
-    const [ isLoading, setLoading ] = useState(false)
-    const allFavorites = useSelector((state) => state.favorite)
 
+    const allFavorites = useSelector((state) => state.favorite)
 
     return (
         <View style={styles.containHome}>
             {
                 allFavorites.length === 0 ?
-                    <ImageBackground source={require('../assets/Escudo1.jpg')} resizeMode="cover" style={{height: "100%"}}>
+                    <ImageBackground source={require('../assets/Shield.jpg')} resizeMode="cover" style={{ height: "100%" }}>
                         <Text style={styles.text}>You   have   no   favorites</Text>
                     </ImageBackground>
                 : <View>
-                        <ImageBackground source={require('../assets/Escudo1.jpg')} resizeMode="cover" style={{height: "100%"}}>
-                            <FlatList 
-                                data={allFavorites}
-                                keyExtractor={({id}) => id.toString()}
-                                renderItem={({item}) => 
-                                    <CharacterCard
-                                        id={item.id}
-                                        image={`${item?.thumbnail?.path}.${item?.thumbnail?.extension}`}
-                                        name={item.name}
-                                    />
-                                }
-                            />
-                        </ImageBackground>        
-                   
+                    <ImageBackground source={require('../assets/Shield.jpg')} resizeMode="cover" style={{ height: "100%" }}>
+                        <FlatList
+                            data={allFavorites}
+                            keyExtractor={({ id }) => id.toString()}
+                            renderItem={({ item }) =>
+                                <CharacterCard
+                                    id={item.id}
+                                    image={`${item?.thumbnail?.path}.${item?.thumbnail?.extension}`}
+                                    name={item.name}
+                                />
+                            }
+                        />
+                    </ImageBackground>
                 </View>
             }
         </View>

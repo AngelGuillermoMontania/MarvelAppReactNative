@@ -1,4 +1,3 @@
-import * as React from "react"
 import { useNavigation } from '@react-navigation/native';
 import { Text, View, ScrollView, Image, StyleSheet, ImageBackground } from 'react-native';
 
@@ -7,13 +6,9 @@ export default function Information({ image, name, description, numSeries, numEv
     const navigation = useNavigation()
 
     return (
-
         <ScrollView>
-            <ImageBackground source={require('../../assets/Escudo1.jpg')} resizeMode="cover" >
-                <Text
-                    allowFontScaling={true}
-                    style={styles.title}
-                >{name}</Text> 
+            <ImageBackground source={require('../../assets/Shield.jpg')} resizeMode="cover" >
+                <Text allowFontScaling={true} style={styles.title} >{ name }</Text> 
                 <View style={styles.containImage}>
                     <Image
                         style={styles.image}
@@ -21,14 +16,12 @@ export default function Information({ image, name, description, numSeries, numEv
                         resizeMode="stretch"
                     />
                 </View>
-                <Text allowFontScaling={true} style={styles.description}>{description}</Text>
-                <Text allowFontScaling={true} style={styles.description}>Number of series: {numSeries}</Text>
-                <Text allowFontScaling={true} style={styles.description}>Number of events: {numEvents}</Text>
-                <Text allowFontScaling={true} style={styles.description}>Number of stories: {numStories}</Text>
+                <Text allowFontScaling={true} style={styles.description}>{ description }</Text>
+                <Text allowFontScaling={true} style={styles.description}>Number of series: { numSeries }</Text>
+                <Text allowFontScaling={true} style={styles.description}>Number of events: { numEvents }</Text>
+                <Text allowFontScaling={true} style={styles.description}>Number of stories: { numStories }</Text>
             </ImageBackground>
         </ScrollView>
-
-
     );
 }
 
@@ -50,7 +43,6 @@ const styles = StyleSheet.create({
     containImage: {
         height: 350,
         width: "100%",
-
     },
     image: {
         height: "100%",

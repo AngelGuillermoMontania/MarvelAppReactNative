@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/Ionicons';
-import { Pressable, View, StyleSheet, Image, Text } from 'react-native';
+import { Pressable, View, StyleSheet, Text } from 'react-native';
 import { addFavorite, deleteFavorite } from '../../Redux/Actions';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -26,7 +26,7 @@ const FavoriteButton = ({ data }) => {
                 {
                     favorite.find(element => element.id === data.id) ?
                         <MaterialCommunityIcons name="star" size={30} color='white' />
-                        : <MaterialCommunityIcons name="star-outline" size={30} color='white' />
+                    : <MaterialCommunityIcons name="star-outline" size={30} color='white' />
                 }
                 <Text style={styles.text}>Favorite</Text>
             </Pressable>

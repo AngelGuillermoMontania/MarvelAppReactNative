@@ -9,13 +9,10 @@ import Detail from "./Components/Detail/Detail"
 import Favorites from './Components/Favorites';
 import ButtonViewFavorites from './Components/ButtonViewFavorites';
 import { useFonts } from 'expo-font'
-import { AppLoading } from 'expo'
-import { BlurView } from 'expo-blur'
-import { ActivityIndicator, StyleSheet } from "react-native";
+import { ActivityIndicator } from "react-native";
 import HeaderBackground from './Components/HeaderBackground';
-import { color } from 'react-native-reanimated';
 import ButtonBack from './Components/ButtonBack';
-import { useEffect, useState } from 'react';
+
 
 const Stack = createStackNavigator();
 
@@ -27,14 +24,11 @@ export default function App() {
         'Avenger': require('./assets/Fonts/Avenger-Regular.ttf')
     })
 
-
     return (
         <Provider store={store} >
             <PersistGate loading={null} persistor={persistor} >
-
                 <NavigationContainer>
                     <Stack.Navigator>
-                        
                         <Stack.Screen name="MARVEL" options={fontsLoaded && {
                             headerTitleStyle: {
                                 fontFamily: 'Marvel',
@@ -52,7 +46,7 @@ export default function App() {
                                     : <ActivityIndicator size="large" color="#00ff00" />)
                             }
                         </Stack.Screen>
-                        <Stack.Screen name="DETAIL" options={ fontsLoaded && {
+                        <Stack.Screen name="DETAIL" options={fontsLoaded && {
                             headerTitleStyle: {
                                 fontFamily: 'Marvel',
                                 fontSize: 40,
@@ -69,7 +63,7 @@ export default function App() {
                                     : <ActivityIndicator size="large" color="#FF0000" />)
                             }
                         </Stack.Screen>
-                        <Stack.Screen name="FAVORITES" options={ fontsLoaded && {
+                        <Stack.Screen name="FAVORITES" options={fontsLoaded && {
                             headerTitleStyle: {
                                 fontFamily: 'Marvel',
                                 fontSize: 40,
@@ -88,9 +82,7 @@ export default function App() {
                         </Stack.Screen>
                     </Stack.Navigator>
                 </NavigationContainer>
-
             </PersistGate>
         </Provider>
     );
-
 }

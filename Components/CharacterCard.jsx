@@ -8,9 +8,9 @@ export default function CharacterCard({ image, name, id }) {
     return (
         <TouchableOpacity 
             style={styles.containCard}
-            onPress={() => navigation.navigate('DETAIL', {id})}
+            onPress={() => navigation.navigate('DETAIL', { id })}
         >
-        <ImageBackground source={require('../assets/fondoCard.jpg')} resizeMode="stretch" style={styles.background} imageStyle={{borderRadius: 20}}>
+        <ImageBackground source={require('../assets/backgroundCard.jpg')} resizeMode="stretch" style={styles.background} imageStyle={{borderRadius: 20}}>
             <View style={styles.containImage}>
                 <Image
                     style={styles.image}
@@ -23,7 +23,6 @@ export default function CharacterCard({ image, name, id }) {
         </TouchableOpacity>
     );
 }
-
 
 const styles = StyleSheet.create({
     containCard: {

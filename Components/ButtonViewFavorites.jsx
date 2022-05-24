@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/Ionicons';
 import { Pressable, View, StyleSheet, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const ButtonViewFavorites = () => {
+export default function ButtonViewFavorites() {
 
     const navigation = useNavigation()
 
@@ -37,5 +36,3 @@ const styles = StyleSheet.create({
         color: 'white'
     }
 });
-
-export default ButtonViewFavorites;

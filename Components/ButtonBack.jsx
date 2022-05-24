@@ -1,9 +1,7 @@
-import React from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/Ionicons';
 import { StyleSheet } from 'react-native';
 
-const ButtonBack = () => {
-
+export default function ButtonBack() {
     return (
         <MaterialCommunityIcons name="arrow-back" size={25} style={styles.icon}/>     
     );
@@ -14,5 +12,3 @@ const styles = StyleSheet.create({
         color: 'white',
     }
 });
-
-export default ButtonBack;

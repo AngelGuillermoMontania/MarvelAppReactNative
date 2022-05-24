@@ -1,13 +1,13 @@
 import { View, Text, Image, StyleSheet, Dimensions } from 'react-native';
 
-const {height, width} = Dimensions.get('window');
+const { height, width } = Dimensions.get('window');
 
 export default function Comic({ name, image }) {
     return (
         <View style={styles.containComic}>
             <View style={styles.containImage}>
-                <Image 
-                    source={{uri: image}}
+                <Image
+                    source={{ uri: image }}
                     style={styles.image}
                 />
             </View>
